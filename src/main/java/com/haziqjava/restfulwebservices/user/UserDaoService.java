@@ -13,9 +13,9 @@ public class UserDaoService {
   private static int userCount = 0;
 
   static {
-    users.add(new User(++userCount, "Adam", LocalDate.now().minusYears(30)));
-    users.add(new User(++userCount, "abc", LocalDate.now().minusYears(23)));
-    users.add(new User(++userCount, "new a", LocalDate.now().minusYears(3)));
+    users.add(new User(++ userCount, "Adam", LocalDate.now().minusYears(30)));
+    users.add(new User(++ userCount, "abc", LocalDate.now().minusYears(23)));
+    users.add(new User(++ userCount, "new a", LocalDate.now().minusYears(3)));
   }
 
   public List<User> findAll() {
@@ -28,13 +28,13 @@ public class UserDaoService {
   }
 
   public User save(User user) {
-    user.setId(++userCount);
+    user.setId(++ userCount);
     users.add(user);
     return user;
   }
 }
 
-//Predicate: (Kind of a lambda function)
+//Predicate: (Kind of a lambda function in ROR)
 //        In Java, the Predicate interface is a functional interface that represents a
 //        predicate or a boolean-valued function that takes one argument and returns a
 //        boolean value. The Predicate interface is a part of the java.util.function package
