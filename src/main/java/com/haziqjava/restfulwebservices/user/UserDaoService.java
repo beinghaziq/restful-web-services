@@ -22,9 +22,10 @@ public class UserDaoService {
     return users;
   }
 
+//  .get() will throw an exception if record not found. That's why we are using orElse
   public User findOne(int id) {
     Predicate<? super User> predicate = user -> user.getId().equals(id);
-    return users.stream().filter(predicate).findFirst().get();
+    return users.stream().filter(predicate).findFirst().orElse(null);
   }
 
   public User save(User user) {
