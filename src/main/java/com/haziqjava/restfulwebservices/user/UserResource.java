@@ -1,6 +1,9 @@
 package com.haziqjava.restfulwebservices.user;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -20,12 +23,18 @@ public class UserResource {
     return service.findAll();
   }
 
+//  INFO: A simple EntityModel wrapping a domain object and adding links to it. (Used for Haeteos)
   @GetMapping(path = "/users/{id}")
-  public User retrieveUser(@PathVariable int id) {
+  public EntityModel<User> retrieveUser(@PathVariable int id) {
     User user = service.findOne(id);
     if (user == null)
       throw new UserNotFoundException("id: " + id);
-    return service.findOne(id);
+    EntityModel<User> entityModel = EntityModel.of(user);
+//    INFO: Builder to ease building Link instances pointing to Spring MVC controllers.
+
+    WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+    entityModel.add(link.withRel("all-users"));
+    return entityModel;
   }
 
   @DeleteMapping(path = "/users/{id}")
