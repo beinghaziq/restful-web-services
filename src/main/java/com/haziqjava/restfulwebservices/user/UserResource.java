@@ -27,6 +27,11 @@ public class UserResource {
     return service.findOne(id);
   }
 
+  @DeleteMapping(path = "/users/{id}")
+  public void deleteUser(@PathVariable int id) {
+    service.deleteById(id);
+  }
+
 
 //  The code first calls the fromCurrentRequest() method on the ServletUriComponentsBuilder
 //  class to get a builder instance that is initialized with the current request's URI as the base.
