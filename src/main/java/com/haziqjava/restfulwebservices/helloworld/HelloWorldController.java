@@ -30,6 +30,8 @@ public class HelloWorldController {
     return new HelloWorldBean(String.format("Hello World, %s", name));
   }
 
+//  INFO: MessageSource is returning respective localized message depending upon Accept-language header
+//          present in request
   @GetMapping(path = "/hello-world-internationized")
   public String helloWorldI18n() {
     Locale locale = LocaleContextHolder.getLocale();
