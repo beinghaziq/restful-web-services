@@ -36,6 +36,7 @@ public class VersioningPersonController {
     return new PersonV2(new Name("Bob", "Charlie"));
   }
 
+//  INFO: application/vnd.company.app-v1+json needs to be sent as Accept header
   @GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v1+json")
   public PersonV1 getFirstVersionOfPersonWithAcceptHeaders() {
     return new PersonV1("Bob Charlie");
