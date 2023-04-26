@@ -1,12 +1,15 @@
 package com.haziqjava.restfulwebservices.filtering;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+//Info: JsonIgnore and JsonIgnoreProperties are being used for static filtering
 //@JsonIgnoreProperties({"field1", "field2"})
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
   private String field1;
-  @JsonIgnore
+//  @JsonIgnore
   private String field2;
   private String field3;
 
