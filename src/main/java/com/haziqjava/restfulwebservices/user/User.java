@@ -20,6 +20,7 @@ public class User {
   @JsonProperty("user_name") //INFO: will be sent as user_name in response
   private String name;
   @Past(message = "Birth date must be in past")
+  @JsonProperty("birth_date")
   private LocalDate birthDate;
 
   public User(Integer id, String name, LocalDate birthDate) {

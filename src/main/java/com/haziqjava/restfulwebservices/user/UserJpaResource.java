@@ -45,7 +45,7 @@ public class UserJpaResource {
 
   @DeleteMapping(path = "/jpa/users/{id}")
   public void deleteUser(@PathVariable int id) {
-    service.deleteById(id);
+    repository.deleteById(id);
   }
 
 
@@ -62,7 +62,7 @@ public class UserJpaResource {
 //  be returned to the client in a response message or used in further processing.
   @PostMapping(path = "/jpa/users")
   public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
-    User savedUser = service.save(user);
+    User savedUser = repository.save(user);
     URI location = ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
             .buildAndExpand(savedUser.getId())
