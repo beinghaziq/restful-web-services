@@ -1,5 +1,6 @@
 package com.haziqjava.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public class User {
   @Past(message = "Birth date must be in past")
   @JsonProperty("birth_date")
   private LocalDate birthDate;
+  @JsonIgnore
   @OneToMany(mappedBy = "user") //User has many posts
   private List<PostModel> posts;
 
@@ -63,5 +65,13 @@ public class User {
             ", name='" + name + '\'' +
             ", birthDate=" + birthDate +
             '}';
+  }
+
+  public List<PostModel> getPosts() {
+    return posts;
+  }
+
+  public void setPosts(List<PostModel> posts) {
+    this.posts = posts;
   }
 }

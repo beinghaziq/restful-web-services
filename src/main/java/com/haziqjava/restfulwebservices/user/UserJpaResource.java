@@ -1,5 +1,6 @@
 package com.haziqjava.restfulwebservices.user;
 
+import com.haziqjava.restfulwebservices.jpa.PostRepository;
 import com.haziqjava.restfulwebservices.jpa.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
@@ -18,11 +19,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 public class UserJpaResource {
   private UserRepository repository;
-  private UserDaoService service;
-
-  public UserJpaResource(UserDaoService service, UserRepository repository) {
+  public UserJpaResource(UserRepository repository) {
     this.repository = repository;
-    this.service = service;
   }
   @GetMapping(path = "/jpa/users")
   public List<User> retrieveAllUsers() {
