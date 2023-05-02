@@ -64,4 +64,12 @@ public class User {
             ", birthDate=" + birthDate +
             '}';
   }
+
+  public List<PostModel> getPosts() {
+    return posts;
+  }
+
+  public void setPosts(List<PostModel> posts) {
+    this.posts = posts;
+  }
 }
