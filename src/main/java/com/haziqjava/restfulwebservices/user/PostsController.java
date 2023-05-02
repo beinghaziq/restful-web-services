@@ -30,6 +30,19 @@ public class PostsController {
     return user.get().getPosts();
   }
 
+  @GetMapping(path = "/jpa/users/{userId}/posts/{id}")
+  public PostModel retrievePostForUser(@PathVariable int userId, @PathVariable int id) {
+    Optional<User> user = userRepository.findById(userId);
+    if (user.isEmpty())
+      throw new UserNotFoundException("id: " + userId);
+
+    Optional<PostModel> post = postRepository.findById(id);
+    if (post.isEmpty())
+      throw new UserNotFoundException("id: " + userId);
+
+    return post.get();
+  }
+
   @PostMapping(path = "/jpa/users/{id}/posts")
   public ResponseEntity<Object> createPostsForUser(@PathVariable int id, @Valid @RequestBody PostModel post) {
     Optional<User> user = userRepository.findById(id);
