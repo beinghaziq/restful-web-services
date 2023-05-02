@@ -1,5 +1,6 @@
 package com.haziqjava.restfulwebservices.exception;
 
+import com.haziqjava.restfulwebservices.user.PostNotFoundException;
 import com.haziqjava.restfulwebservices.user.UserNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
-  @ExceptionHandler(UserNotFoundException.class)
+  @ExceptionHandler({UserNotFoundException.class, PostNotFoundException.class})
   public final ResponseEntity<ErrorDetails> handleUserNotFoundException(Exception ex, WebRequest request){
     ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(),
             ex.getMessage(), request.getDescription(false));
