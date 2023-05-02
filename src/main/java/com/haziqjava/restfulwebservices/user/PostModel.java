@@ -1,15 +1,27 @@
 package com.haziqjava.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity(name = "post")
 public class PostModel {
   @Id
   @GeneratedValue
   private Integer id;
+  @Size(min = 10)
   private String description;
+  @JsonIgnore
   @ManyToOne(fetch = FetchType.LAZY)
   private User user;
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
 
   public Integer getId() {
     return id;
