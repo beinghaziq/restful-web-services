@@ -26,6 +26,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
 <!--        INFO: The spring-boot-actuator module provides all of Spring Boot’s production-ready features.-->
 <!--        The recommended way to enable the features is to add a dependency on the spring-boot-starter-actuator “Starter”.-->
 <!--        To access use /actuator-->
